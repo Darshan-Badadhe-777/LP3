@@ -1,0 +1,26 @@
+# Initialize parameters
+x = 2.0  # Starting point
+lr = 0.01  # Learning rate
+precision = 1e-6  # Convergence threshold
+previous_step_size = 1.0  # Initial step size
+iters = 0  # Iteration counter
+max_iter = 10000  # Maximum number of iterations
+
+# Function for the gradient (derivative)
+def gf(x):
+    return 2 * (x + 3)  # Derivative of (x + 3)^2
+
+# List to store the values of x at each iteration
+gd = []
+
+# Gradient Descent loop
+while previous_step_size > precision and iters < max_iter:
+    prev = x
+    x = prev - lr * gf(prev)  # Update x based on the gradient
+    previous_step_size = abs(x - prev)  # Calculate the change in x
+    iters += 1  # Increment the iteration counter
+    gd.append(x)  # Store the current value of x
+    print("Iteration:", iters, "Value:", x)
+
+# Final result
+print("Local Minima occurs at x =", x)
